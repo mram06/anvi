@@ -1,0 +1,179 @@
+@import url(./nullstyle.scss);
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400..700&display=swap');
+
+@font-face {
+  font-family: 'Kyiv Type Sans';
+  src: url('@/assets/fonts/KyivTypeSans-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kyiv Type Sans';
+  src: url('@/assets/fonts/KyivTypeSans-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kyiv Type Sans';
+  src: url('@/assets/fonts/KyivTypeSans-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kyiv Type Sans';
+  src: url('@/assets/fonts/KyivTypeSans-Medium.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Kyiv Type Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  -webkit-font-feature-settings: 'lnum';
+  -moz-font-feature-settings: 'lnum';
+  -ms-font-feature-settings: 'lnum';
+  -o-font-feature-settings: 'lnum';
+  font-feature-settings: 'lnum';
+}
+p {
+  color: #444444;
+  font-family: 'Raleway';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 3%;
+  text-align: left;
+}
+a {
+  color: black;
+}
+
+h1,
+h2 {
+  color: rgb(21, 21, 21);
+  font-family: 'Kyiv Type Sans';
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 72px;
+  letter-spacing: 0%;
+}
+h2 {
+  font-size: 40px;
+  line-height: 48px;
+}
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+.block-container {
+  padding: 0 64px;
+}
+.content {
+  flex: 1 1 auto;
+}
+label {
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type='number'] {
+}
+
+input[type='email'],
+input[type='text'] {
+  font-feature-settings: 'lnum';
+  font-size: 16px;
+  font-family: 'Raleway';
+  font-weight: 500;
+  line-height: 24px;
+  height: 48px;
+  border: 1px solid #444444;
+  padding: 10px;
+  &::placeholder {
+    font-family: 'Raleway';
+    font-size: 16px;
+  }
+  &:focus {
+    font-family: 'Raleway';
+    font-size: 16px;
+  }
+}
+
+input[type='checkbox'] {
+}
+textarea {
+}
+button.primary {
+  background: transparent;
+  border: 1px solid #444444;
+  padding: 12px;
+
+  width: 192px;
+  height: 48px;
+
+  text-align: center;
+  line-height: 24px;
+  font-size: 16px;
+  color: #151515;
+  font-weight: 500;
+  @media only screen and (min-width: 500px) {
+    &:hover {
+      background-color: #151515;
+      color: white;
+      transition: 0.2s ease background-color;
+    }
+  }
+
+  &:active {
+  }
+  &:disabled {
+  }
+}
+button.secondary {
+  background: transparent;
+  border-top: 1px solid #444444;
+  border-bottom: 1px solid #444444;
+  padding: 12px;
+
+  width: 192px;
+
+  text-align: center;
+  line-height: 24px;
+  font-size: 16px;
+  color: #151515;
+  font-weight: 500;
+  @media only screen and (min-width: 500px) {
+    &:hover {
+      border: 1px solid #444444;
+    }
+  }
+
+  &:active {
+  }
+  &:disabled {
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
