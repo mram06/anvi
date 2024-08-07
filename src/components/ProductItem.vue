@@ -1,10 +1,10 @@
 <template>
   <div class="item">
     <template v-if="itemObj.novelty"><div class="item__novelty">Новинка</div></template>
-    <div class="item__img">
+    <div @click="onProduct" class="item__img">
       <img :src="itemObj.imgSrc" />
     </div>
-    <div class="item__title">{{ itemObj.title }}</div>
+    <div @click="onProduct" class="item__title">{{ itemObj?.title }}</div>
     <div class="item__about">
       <div class="item__about-price">{{ itemObj.price }} ₴</div>
       <p class="item__about-volume">{{ itemObj.volume }}</p>
@@ -45,11 +45,17 @@ function onProduct() {
     color: white;
   }
   &__img {
+    cursor: pointer;
     height: 360px;
     background-color: #f4f4f4;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__title {
+    cursor: pointer;
     margin: 16px 0 0 0;
   }
 

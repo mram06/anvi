@@ -45,19 +45,25 @@
               <div class="categories__category-img">
                 <img src="@/assets/img/body.jpg" />
               </div>
-              <button class="categories__category-button secondary">Для тіла</button>
+              <router-link :to="{ name: 'catalogueToBody' }">
+                <button class="categories__category-button secondary">Для тіла</button>
+              </router-link>
             </div>
             <div class="categories__category">
               <div class="categories__category-img">
                 <img src="@/assets/img/face.jpg" />
               </div>
-              <button class="categories__category-button secondary">Для обличчя</button>
+              <router-link :to="{ name: 'catalogueToFace' }">
+                <button class="categories__category-button secondary">Для обличчя</button>
+              </router-link>
             </div>
             <div class="categories__category">
               <div class="categories__category-img">
                 <img src="@/assets/img/hair.jpg" />
               </div>
-              <button class="categories__category-button secondary">Для волосся</button>
+              <router-link :to="{ name: 'catalogueToHair' }">
+                <button class="categories__category-button secondary">Для волосся</button>
+              </router-link>
             </div>
           </div>
         </div>

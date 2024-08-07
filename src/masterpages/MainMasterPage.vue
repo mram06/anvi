@@ -1,5 +1,13 @@
 <template>
-  <div class="wrapper">
+  <div
+    :class="[
+      'wrapper',
+      {
+        cart: isCartOpen
+      }
+    ]"
+  >
+    <cart-component @close-cart="onOpenCart" />
     <p class="discount">Даруємо знижку -10% на перше замовлення</p>
     <header class="header">
       <div class="container">
@@ -11,12 +19,12 @@
           </div>
           <nav class="header__menu">
             <router-link :to="{ name: 'catalogue' }">Каталог</router-link>
-            <router-link to="/">Для тіла</router-link>
-            <router-link to="/">Для волосся</router-link>
-            <router-link to="/">Для обличчя</router-link>
-            <router-link to="/">Про ANVI</router-link>
+            <router-link :to="{ name: 'catalogueToBody' }">Для тіла</router-link>
+            <router-link :to="{ name: 'catalogueToHair' }">Для волосся</router-link>
+            <router-link :to="{ name: 'catalogueToFace' }">Для обличчя</router-link>
+            <router-link :to="{ name: 'catalogue' }">Про ANVI</router-link>
           </nav>
-          <div class="header__tools">
+          <div @click="onOpenCart" class="header__tools">
             <div class="header__tools-cart">
               <img src="@/assets/icons/cart.svg" />
             </div>
@@ -44,9 +52,15 @@
           </div>
           <div class="footer__menu-block">
             <p class="footer__menu-title">Каталог</p>
-            <p class="footer__menu-ref"><router-link to="/">Для тіла</router-link></p>
-            <p class="footer__menu-ref"><router-link to="/">Для обличчя</router-link></p>
-            <p class="footer__menu-ref"><router-link to="/">Для волосся</router-link></p>
+            <p class="footer__menu-ref">
+              <router-link :to="{ name: 'catalogueToBody' }">Для тіла</router-link>
+            </p>
+            <p class="footer__menu-ref">
+              <router-link :to="{ name: 'catalogueToHair' }">Для волосся</router-link>
+            </p>
+            <p class="footer__menu-ref">
+              <router-link :to="{ name: 'catalogueToFace' }">Для обличчя</router-link>
+            </p>
             <p class="footer__menu-ref"><router-link to="/">Подарункова картка</router-link></p>
           </div>
           <div class="footer__menu-block">
@@ -74,16 +88,26 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import CartComponent from '@/components/CartComponent.vue'
+import { ref } from 'vue'
+
+const isCartOpen = ref(false)
+function onOpenCart() {
+  isCartOpen.value = !isCartOpen.value
+}
+</script>
 
 <style lang="scss" scoped>
+.wrapper.cart .overlay {
+  display: block;
+}
 .discount {
   color: white;
   text-align: center;
   background: rgb(21, 21, 21);
 }
 .header {
-  position: sticky;
   &__body {
     padding: 0 64px;
     height: 64px;
@@ -97,6 +121,7 @@
   }
 
   &__tools {
+    cursor: pointer;
     display: flex;
     gap: 4px;
     &-cart {

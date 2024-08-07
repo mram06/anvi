@@ -13,6 +13,7 @@ export const useItemsStore = defineStore('items', () => {
 
   async function loadItemsList() {
     const generalStore = useGeneralStore()
+    generalStore.setLoading(true)
     await collectionDB
       .loadItemsList()
       .then((list) => (itemsList.value = list))
@@ -24,13 +25,21 @@ export const useItemsStore = defineStore('items', () => {
   }
   async function getItemById(itemId) {
     const generalStore = useGeneralStore()
+    generalStore.setLoading(true)
+    let foundItem = {}
     await collectionDB
       .getItemById(itemId)
-      .then((item) => (currentItem.value = item))
-      .catch((error) => generalStore.setError(error))
-      .finally(() => {
-        generalStore.setLoading(false)
+      .then((item) => {
+        foundItem = item
       })
+      .catch((error) => generalStore.setError(error))
+      .finally(() => {})
+
+    generalStore.setLoading(false)
+    return foundItem
+  }
+  function clearCurrentItem() {
+    currentItem.value = null
   }
 
   const sortedItemsList = computed(() => {
@@ -38,5 +47,13 @@ export const useItemsStore = defineStore('items', () => {
     else return {}
   })
 
-  return { itemsList, currentItem, loadItemsList, sortedItemsList, isDataLoaded, getItemById }
+  return {
+    itemsList,
+    currentItem,
+    loadItemsList,
+    sortedItemsList,
+    isDataLoaded,
+    getItemById,
+    clearCurrentItem
+  }
 })
