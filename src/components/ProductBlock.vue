@@ -79,7 +79,7 @@
                 <p class="product__action-stock"><span></span> В наявності!</p>
               </div>
               <div class="product__action-right">
-                <button class="product__action-button primary">В кошик</button>
+                <button @click="addToCart" class="product__action-button primary">В кошик</button>
                 <p>Термін доставки 3-5 днів</p>
               </div>
             </div>
@@ -91,6 +91,7 @@
 </template>
 
 <script setup>
+import { useCartStore } from '@/stores/cart'
 import { computed, ref } from 'vue'
 
 const props = defineProps({
@@ -105,6 +106,11 @@ const countToBuy = ref(1)
 function onCount(action) {
   if (action === 'increase') countToBuy.value++
   else if (countToBuy.value > 1) countToBuy.value--
+}
+
+const cartStore = useCartStore()
+function addToCart() {
+  cartStore.onAddToCart(props.currentItem.id, countToBuy.value)
 }
 </script>
 

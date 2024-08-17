@@ -28,7 +28,7 @@
             <div class="header__tools-cart">
               <img src="@/assets/icons/cart.svg" />
             </div>
-            <div class="header__tools-count">0</div>
+            <div class="header__tools-count">{{ cartStore.getCartItemsCount }}</div>
           </div>
         </div>
       </div>
@@ -90,12 +90,15 @@
 
 <script setup>
 import CartComponent from '@/components/CartComponent.vue'
-import { ref } from 'vue'
+import { useCartStore } from '@/stores/cart'
+import { computed, ref } from 'vue'
 
 const isCartOpen = ref(false)
 function onOpenCart() {
   isCartOpen.value = !isCartOpen.value
 }
+
+const cartStore = useCartStore()
 </script>
 
 <style lang="scss" scoped>

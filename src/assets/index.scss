@@ -66,7 +66,7 @@ h2 {
 }
 .wrapper {
   min-height: 100vh;
-  overflow: hidden;
+  overflow: clip;
 
   display: flex;
   flex-direction: column;
@@ -79,7 +79,7 @@ h2 {
   padding: 0 64px;
 }
 .content {
-  flex: 1 1 auto;
+  flex-grow: 1;
 }
 label {
 }
@@ -96,6 +96,25 @@ input[type='number'] {
 }
 
 input[type='number'] {
+}
+
+select {
+  font-feature-settings: 'lnum';
+  font-size: 16px;
+  font-family: 'Raleway';
+  font-weight: 500;
+  line-height: 24px;
+  height: 48px;
+  border: 1px solid #444444;
+  padding: 10px;
+  &::placeholder {
+    font-family: 'Raleway';
+    font-size: 16px;
+  }
+  &:focus {
+    font-family: 'Raleway';
+    font-size: 16px;
+  }
 }
 
 input[type='email'],
@@ -119,6 +138,8 @@ input[type='text'] {
 }
 
 input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
 }
 textarea {
 }

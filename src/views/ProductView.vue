@@ -30,7 +30,10 @@ function updateRecentlyViewed(productId) {
 }
 const currentItem = ref(null)
 onBeforeMount(async () => {
-  currentItem.value = await itemsStore.getItemById(route.params.id)
+  currentItem.value = {
+    id: route.params.id,
+    ...(await itemsStore.getItemByIdWithLoading(route.params.id))
+  }
   updateRecentlyViewed(route.params.id)
 })
 onUnmounted(() => {
